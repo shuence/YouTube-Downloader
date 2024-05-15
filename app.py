@@ -46,6 +46,3 @@ def download():
 def error():
     return render_template('error.html', message='Please fill in all fields!')
 
-
-if __name__ == '__main__':
-   app.run(debug=False, host='0.0.0.0')
