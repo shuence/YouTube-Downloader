@@ -1,15 +1,22 @@
 {% extends "layout.html" %}
 
+{% block head %}
+    <title>YouTube Downloader | Shuence</title>
+    <meta name="description" content="Download YouTube videos and audio easily with Shuence's YouTube Downloader. Choose between video (mp4) or audio (mp3) formats.">
+    <meta name="keywords" content="YouTube Downloader, Download YouTube Videos, Download YouTube Audio, mp4, mp3, Shuence">
+    <meta name="author" content="Shuence">
+    <meta name="robots" content="index, follow">
+{% endblock %}
+
 {% block body %}
     <div class="container">
         <header>
-            <h1><i class="fa-brands fa-youtube"></i> YouTube Downloader</h1>
+            <h1><i class="fab fa-youtube"></i> YouTube Downloader</h1>
         </header>
-        <div class="msg" hidden></div>
         <form id="download_form">
-            <input autocomplete="off" type="text" placeholder="Paste the url here"  name="url" id="url">
-            <input autocomplete="off" type="text" placeholder="Title" name="title" id="title">
-            <select name="format" id="format">
+            <input autocomplete="off" type="text" placeholder="Paste the URL here" name="url" id="url" required>
+            <input autocomplete="off" type="text" placeholder="Title" name="title" id="title" required>
+            <select name="format" id="format" required>
                 <option value="" disabled selected>Select Format</option>
                 <option value="mp4">Video</option>
                 <option value="mp3">Audio</option>
@@ -25,12 +32,12 @@
             const msg = document.querySelector('.msg');
             msg.innerHTML = "{{ message }}";
             msg.style.display = 'block';
-            setInterval(() => {
+            setTimeout(() => {
                 msg.style.display = 'none';
             }, 8000);
 
             document.getElementById('download_form').reset();
         </script>
     {% endif %}
-    <script src="../static/index.js"></script>
+    <script src="{{ url_for('static', filename='index.js') }}"></script>
 {% endblock %}
