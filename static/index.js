@@ -30,6 +30,11 @@ form.addEventListener('submit', async (e) => {
         return;
     }
 
+    if (!validateYouTubeUrl(url.value)) {
+        alert('Please enter a valid YouTube URL.');
+        return;
+    }
+
     showLoadingSpinner();
 
     try {
